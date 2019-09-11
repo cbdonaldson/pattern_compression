@@ -1,4 +1,6 @@
-# Pattern Compression ATLAS QT
+# Pattern Compression
+## ATLAS Qualification Task
+
 
 This project uses two methods of compression to optimise the representation and storage of ATLAS ITK pattern banks.
 
