@@ -5,5 +5,6 @@ This project uses two methods of compression to optimise the representation and 
 patternIndex  |  hashId_L0  |  hit_L0  |  hashId_L1  |  hit_L1  |  ...  |  hashId_L7  |  hit_L7  
 
 
+![image](pg.png)
 
 
