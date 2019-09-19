@@ -6,11 +6,19 @@ Pandas 0.24.2
 
 ```git clone https://github.com/cbdonaldson/pattern_compression```
 
+
+To run, choose either ```single_region/run/``` or ```multi_region/run```  
+then ```source pattern_compression.sh <pattern_id> <num_components> <max_strip> <max_col>```  
+
+The max_strip and max_col values must be known for the chosen pattern bank, with the num_components being optional (2 components recommended). E.g.
+
+```source ATLAS-P2-ITK-05-00-00_eta0.1_6of8_pt4-400_30M-pix+strips-mixed21111122 2 21 1``` 
+
+
 This project uses two methods of compression to optimise the representation and storage of ATLAS ITK pattern banks. The first is a lossless dictionary-based compression to remove redundancies in the pattern banks. Then, principal component analysis (PCA) is used to lower the dimensionality of the patterns. The input pattern banks are generated from an associated C++ framework (link) and stored in ```banks/``` ; the format of the banks is as follows:
 
 
 ![](https://github.com/cbdonaldson/pattern_compression/blob/master/images/pattern_format.png)
-
 
 Pattern compression can be performed on banks in different eta regions, with barrel-endcap transition regions (\eta = 1.2-1.4) requiring a different workflow. In this case, the 'multi_region' pathway is used and the bank is split into different sub-banks corresponding to different layer combinations. The compression is then performed on each bank separately before combining the results. For other regions containing only one layer combination, the 'single_region' pathway should be used.
 
