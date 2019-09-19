@@ -1,8 +1,7 @@
 # Pattern Compression
 ## Installation
 
-Python 3.6.8 :: Anaconda, Inc.
-
+Python 3.6.8
 Pandas 0.24.2
 
 ```git clone https://github.com/cbdonaldson/pattern_compression```
