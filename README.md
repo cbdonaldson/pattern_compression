@@ -1,12 +1,10 @@
 # Pattern Compression
 ## Installation
 
-Setup:
-
 Python 3.6.8 :: Anaconda, Inc.
 Pandas 0.24.2
 
-git clone https://github.com/cbdonaldson/pattern_compression
+```git clone https://github.com/cbdonaldson/pattern_compression```
 
 This project uses two methods of compression to optimise the representation and storage of ATLAS ITK pattern banks. The first is a lossless dictionary-based compression to remove redundancies in the pattern banks. Then, principal component analysis (PCA) is used to lower the dimensionality of the patterns. The input pattern banks can be generated from an associated C++ framework (link); the format of the banks is as follows:
 
