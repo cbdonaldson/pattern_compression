@@ -10,7 +10,7 @@ Pandas 0.24.2
 To run, choose either ```single_region/run/``` or ```multi_region/run```  
 then ```source pattern_compression.sh <patternbank_id> <num_components> <max_strip> <max_col>```  
 
-The max_strip and max_col values must be known for the chosen pattern bank, with the num_components being optional (2 components recommended). E.g.
+The max_strip and max_col values must be known for the chosen pattern bank, with the num_components being optional (2 components recommended). The associated max_strip and max_col values can be found in ```banks/max.txt```.  E.g.
 
 ``` cd single_region/run/```
 ```source ATLAS-P2-ITK-05-00-00_eta0.1_6of8_pt4-400_30M-pix+strips-mixed21111122 2 21 1``` 
@@ -37,11 +37,15 @@ The compression workflow begins by grouping patterns into sectors, defined by a 
 
 ![](https://github.com/cbdonaldson/pattern_compression/blob/master/images/dictionary_compression.png)
 
-Due to the presence of missing hits in many patterns, some sectors contain one/two empty detector elements and are referred to as single/double wildcard sectors. A sector-linking algorithm will match these incomplete sectors to the corresponding complete sectors, choosing the most populous sector if ambiguities arise. The resulting output 'linked_sectors' contains, for each complete sector, the set of corresponding incomplete sectors.
+Due to the presence of missing hits in many patterns, some sectors contain one/two empty detector elements and are referred to as single/double wildcard sectors. A sector-linking algorithm will match these incomplete sectors to the corresponding complete sectors, choosing the most populous sector if ambiguities arise. The resulting output 'linked_sectors.bin' contains, for each complete sector, the set of corresponding incomplete sectors. Additionally, a file 'unlinked_sectors.bin' is created, listing those sectors that have no corresponding complete sectors.
 
 ![](https://github.com/cbdonaldson/pattern_compression/blob/master/images/sector_linking.png)
 
-The number of components can be chosen for PCA compression to reduce the dimensionality of the patterns. 
+The number of components can be chosen for PCA compression to reduce the dimensionality of the patterns. The patterns are decoded before applying PCA so that input patterns to the compression algorithm are of the form:
+
+![](https://github.com/cbdonaldson/pattern_compression/blob/master/images/decoded_pattern.png)
+
+where the range of values for each component depends on the eta region of the pattern bank. In general, the column value is a categorical variable with which the sectors are split into multiple sub-sectors. The PCA compression is then performed on these sub-sectors, storing the compressed patterns, eigenpatterns and mean pattern for each one.For wildcard sectors, the patterns are merged with the corresponding complete sector, the wildcard layer is dropped and the PCA parameters calculated using the combined pattern set. After this, only those patterns belonging to original wildcard sector are selected and stored, with the wildcard inserted back into the pattern. A similar approach is taken with the unlinked sectors without the added benefit of merging patterns to improve statistics.  
 
 
 

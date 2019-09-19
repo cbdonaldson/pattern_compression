@@ -1,0 +1,7 @@
+The max_strip and max_col values can be obtained from the readout in the associated DataWriter framework (link).
+For the banks included here:
+
+ATLAS-P2-ITK-05-00-00_eta1.2_6of8_pt4-400_30M-pix+strips-mixed21111122
+max_strip = 21
+max_col = 1
+
