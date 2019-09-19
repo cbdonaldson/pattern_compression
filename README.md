@@ -8,12 +8,21 @@ Pandas 0.24.2
 
 
 To run, choose either ```single_region/run/``` or ```multi_region/run```  
-then ```source pattern_compression.sh <pattern_id> <num_components> <max_strip> <max_col>```  
+then ```source pattern_compression.sh <patternbank_id> <num_components> <max_strip> <max_col>```  
 
 The max_strip and max_col values must be known for the chosen pattern bank, with the num_components being optional (2 components recommended). E.g.
 
+``` cd single_region/run/```
 ```source ATLAS-P2-ITK-05-00-00_eta0.1_6of8_pt4-400_30M-pix+strips-mixed21111122 2 21 1``` 
 
+For an example of multi_region:
+
+``` cd multi_region/run/```
+``` source ATLAS-P2-ITK-05-00-00_eta1.2_6of8_pt4-400_30M-pix+strips-mixed21111122 2 21 1```
+
+Results will be stored in ```outputs/<patternbank_id>/bin/```
+
+## PatternBank`
 
 This project uses two methods of compression to optimise the representation and storage of ATLAS ITK pattern banks. The first is a lossless dictionary-based compression to remove redundancies in the pattern banks. Then, principal component analysis (PCA) is used to lower the dimensionality of the patterns. The input pattern banks are generated from an associated C++ framework (link) and stored in ```banks/``` ; the format of the banks is as follows:
 
