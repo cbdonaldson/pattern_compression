@@ -22,7 +22,7 @@ For an example of multi_region:
 
 Results will be stored in ```outputs/<patternbank_id>/bin/```
 
-## PatternBank`
+## PatternBank
 
 This project uses two methods of compression to optimise the representation and storage of ATLAS ITK pattern banks. The first is a lossless dictionary-based compression to remove redundancies in the pattern banks. Then, principal component analysis (PCA) is used to lower the dimensionality of the patterns. The input pattern banks are generated from an associated C++ framework (link) and stored in ```banks/``` ; the format of the banks is as follows:
 
