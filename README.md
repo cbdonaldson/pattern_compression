@@ -43,7 +43,7 @@ Due to the presence of missing hits in many patterns, some sectors contain one/t
 
 The number of components can be chosen for PCA compression to reduce the dimensionality of the patterns. The patterns are decoded before applying PCA so that input patterns to the compression algorithm are of the form:
 
-![](https://github.com/cbdonaldson/pattern_compression/blob/master/images/decoded_pattern.png)
+![](https://github.com/cbdonaldson/pattern_compression/blob/master/images/decoded_patterns2.png)
 
 where the range of values for each component depends on the eta region of the pattern bank. In general, the column value is a categorical variable with which the sectors are split into multiple sub-sectors. The PCA compression is then performed on these sub-sectors, storing the compressed patterns, eigenpatterns and mean pattern for each one.For wildcard sectors, the patterns are merged with the corresponding complete sector, the wildcard layer is dropped and the PCA parameters calculated using the combined pattern set. After this, only those patterns belonging to original wildcard sector are selected and stored, with the wildcard inserted back into the pattern. A similar approach is taken with the unlinked sectors without the added benefit of merging patterns to improve statistics.  
 
